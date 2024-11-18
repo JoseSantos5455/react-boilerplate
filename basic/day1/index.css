@@ -1,0 +1,35 @@
+.fake-title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.fake-button {
+  border: 1px solid black;
+  border-radius: 2px;
+  width: fit-content;
+  padding: 2px 4px;
+  background-color: hsl(0, 0%, 83%);
+}
+
+.fake-button:hover {
+  background-color: hsl(0, 0%, 87%);
+}
+
+.fake-button:active {
+  background-color: hsl(0, 0%, 70%);
+}
+
+.box-model {
+  width: 100px;
+  padding: 5px;
+  margin: 5px;
+  border: 5px solid black;
+}
+
+h1.title {
+  color: blue;
+}
+
+.title {
+  color: red;
+}

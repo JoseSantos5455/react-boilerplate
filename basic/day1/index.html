@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML -->
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day HTML & CSS</title>
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./card.css" />
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <h1 class="title">HTML and CSS</h1>
+    <div class="fake-title">HTML and CSS</div>
+
+    <button>Click me</button>
+    <div class="fake-button">Click me</div>
+
+    <div class="box-model">box model text</div>
+
+    <h2>BEM</h2>
+    <div class="card">
+      <div class="card__image-container">
+        <img class="card__image" />
+      </div>
+      <h2 class="card__title">Headline</h2>
+      <h3 class="card__subtitle">Subhead</h3>
+      <p class="card__body">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum debitis
+        minima, vitae cumque reprehenderit at blanditiis animi, vero corporis,
+        aspernatur voluptate. Laboriosam ducimus provident ipsum quod.
+        Laboriosam quibusdam distinctio adipisci!
+      </p>
+      <div class="card__actions">
+        <button>Secondary</button>
+        <button>Primary</button>
+      </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <section>
+      <header>
+        <h2>Semantic HTML</h2>
+      </header>
+      <div>HTML vs HTML5</div>
+      <a href="https://www.w3schools.com/html/html5_semantic_elements.asp"
+        >A W3 School article about semantic HTML</a
+      >
+    </section>
+
+    <h2>Table</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Body</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>React 18</td>
+          <td>is good</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>React 19</td>
+          <td>is better</td>
+        </tr>
+      </tbody>
+      <caption>
+        Posts Data
+      </caption>
+    </table>
+
+    <h2>Form</h2>
+    <!-- form default behavior: will refresh page on submit-->
+    <form id="form">
+      <!-- default -->
+      <input type="text" />
+      <div>
+        <label>
+          I consent to the terms & conditions
+          <input type="checkbox" />
+        </label>
+      </div>
+      <input type="radio" name="question-1" />
+      <input type="radio" name="question-1" />
+      <input type="radio" name="question-1" />
+      <input type="date" />
+      <input type="email" />
+      <input type="password" />
+      <!-- <input type="submit" /> -->
+
+      <button type="button">normal button</button>
+      <button>Submit</button>
+    </form>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
