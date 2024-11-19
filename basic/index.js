@@ -39,17 +39,17 @@ function foo(name) {
 // console.log({} instanceof Object);
 
 ////////////////////////////////////////// Copying Objects //////////////////////////////////////////
-const person1 = {
-  name: "Joe",
-  age: 25,
-  address: {
-    street: "123 main st",
-    city: "New York",
-  },
-  sayHi: () => {
-    console.log("Hi");
-  },
-};
+// const person1 = {
+//   name: "Joe",
+//   age: 25,
+//   address: {
+//     street: "123 main st",
+//     city: "New York",
+//   },
+//   sayHi: () => {
+//     console.log("Hi");
+//   },
+// };
 // const newPerson = Object.assign({}, person1);
 // {...person1} is the same as doing this
 
