@@ -140,4 +140,112 @@ const asyncCallbackBurger = () => {
   });
 };
 
-asyncCallbackBurger();
+// asyncCallbackBurger();
+
+////////////////////// Async Kitchen (Promise) //////////////////////
+
+const asyncPromiseBurger = () => {
+  function getBeef() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log("getting beef");
+        resolve("beef");
+      }, 500);
+    });
+  }
+
+  function cookBeef(beef) {
+    return new Promise((resolve, reject) => {
+      if (beef !== "beef") reject("This is not beef");
+      setTimeout(() => {
+        console.log("cooking beef");
+        resolve("patty");
+      }, 1500);
+    });
+  }
+
+  function getBun() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log("getting bun");
+        resolve("bun");
+      }, 500);
+    });
+  }
+
+  function getLettuce() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log("getting lettuce");
+        resolve("lettuce");
+      }, 500);
+    });
+  }
+
+  function assembleBurger(patty, bun, lettuce) {
+    return new Promise((resolve, reject) => {
+      if (patty !== "patty" || bun !== "bun" || lettuce !== "lettuce")
+        reject("Wrong ingredients, burger not assembled");
+      setTimeout(() => {
+        console.log("assembling burger");
+        resolve("burger");
+      }, 1500);
+    });
+  }
+
+  //   const ingredients = {};
+  //   getBeef()
+  //     .then((beef) => {
+  //       return cookBeef(beef);
+  //     })
+  //     .then((patty) => {
+  //       ingredients.patty = patty;
+  //       return getBun();
+  //     })
+  //     .then((bun) => {
+  //       ingredients.bun = bun;
+  //       return getLettuce();
+  //     })
+  //     .then((lettuce) => {
+  //       const patty = ingredients.patty;
+  //       const bun = ingredients.bun;
+  //       return assembleBurger(patty, bun, lettuce);
+  //     });
+
+  //   getBeef().then((beef) => {
+  //     cookBeef(beef).then((patty) => {
+  //       getBeef().then((bun) => {
+  //         getLettuce().then((lettuce) => {
+  //           assembleBurger(patty, bun, lettuce).then((burger) => {
+  //             console.log(`put ${burger} in trash`);
+  //           });
+  //         });
+  //       });
+  //     });
+  //   });
+
+  //   better approach with async / await
+
+  //   difference between async / await and promises:
+  //   async / await makes it block-like inside of the async function
+  //   it makes the code more readable
+
+  (async function () {
+    const beef = await getBeef();
+    const patty = await cookBeef(beef);
+    const bun = await getBun();
+    const lettuce = await getLettuce();
+    const burger = await assembleBurger(patty, bun, lettuce);
+    console.log("put", burger, "in trash");
+  })();
+};
+
+// asyncPromiseBurger();
+
+
+
+
+
+
+
+
