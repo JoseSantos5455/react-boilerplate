@@ -45,7 +45,7 @@ const sum = (a) => (b) => (c) => a + b + c;
 // const sum = (a) => (b) => (c) => a + b + c;
 
 // closure
-
+// the inner function has access to the outer function's variables
 function outerFn() {
   let privateVar = "I am a private variable";
   return function innerFn() {

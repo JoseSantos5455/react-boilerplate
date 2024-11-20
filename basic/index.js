@@ -65,21 +65,21 @@ function foo(name) {
 // console.log(person1.address == newPerson.address);
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
-const clone = {
-  ...person1,
-  name: "Mike",
-};
+// const clone = {
+//   ...person1,
+//   name: "Mike",
+// };
 
-const arr1 = [1, 2, 3];
-const arr2 = [4, 5, 6];
-const arr3 = [...arr1, ...arr2];
+// const arr1 = [1, 2, 3];
+// const arr2 = [4, 5, 6];
+// const arr3 = [...arr1, ...arr2];
 
 // console.log(clone);
 
 // deep clone
-const str = JSON.stringify(person1);
+// const str = JSON.stringify(person1);
 // console.log(str);
-const deepClone = JSON.parse(str);
+// const deepClone = JSON.parse(str);
 // console.log(deepClone);
 // // JSON stringify and parse will not work with functions
 
