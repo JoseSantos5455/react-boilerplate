@@ -1,60 +1,70 @@
 function createTodoElem(todo) {
   const todoItemElem = document.createElement("li");
+  const taskElem = document.createElement("div");
 
-  let isEditMode = false;
+  // task elem
+  taskElem.textContent = `Task: ${todo.task}`;
+  const statusElem = document.createElement("div");
+  statusElem.textContent = `Completed: ${todo.completed}`;
 
-  if (!isEditMode) {
-    const taskElem = document.createElement("div");
+  // delete button
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Delete";
+  deleteButton.addEventListener("click", async () => {
+    const newTodo = await todoAPI.deleteTodo(todo.id);
+    todo = newTodo;
+    todoItemElem.remove();
+  });
 
-    taskElem.textContent = `Task: ${todo.task}`;
-    const statusElem = document.createElement("div");
-    statusElem.textContent = `Completed: ${todo.completed}`;
+  // edit button
+  const editButton = document.createElement("button");
+  editButton.textContent = "Edit";
 
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Delete";
-    deleteButton.addEventListener("click", async () => {
-      await todoAPI.deleteTodo(todo.id);
-      todoItemElem.remove();
-    });
+  // input element
+  const inputElem = document.createElement("input");
+  inputElem.value = todo.task;
 
-    const editButton = document.createElement("button");
-    editButton.textContent = "Edit";
-    editButton.addEventListener("click", () => {
-      // remove the other elements
-      todoItemElem.append(editMode);
-      normalMode.remove();
-    });
+  // save button
+  const saveButton = document.createElement("button");
+  saveButton.textContent = "Save";
 
-    todoItemElem.append(taskElem, statusElem, deleteButton, editButton);
-  } else {
-    const inputElem = document.createElement("input");
-    inputElem.value = "";
+  // cancel button
+  const cancelButton = document.createElement("button");
+  cancelButton.textContent = "Cancel";
 
-    const saveButton = document.createElement("button");
-    saveButton.textContent = "Save";
-    saveButton.addEventListener("click", async () => {
-      const updatedTodo = await todoAPI.editTodo(todo.id, {
-        task: inputElem.value,
-      });
-      taskElem.textContent = `Task: ${updatedTodo.task}`;
-      statusElem.textContent = `Completed: ${updatedTodo.completed}`;
-      todoItemElem.append(taskElem, statusElem, deleteButton, editButton);
-      inputElem.remove();
-      saveButton.remove();
-      cancelButton.remove();
-    });
+  // add event listener to the edit and save button
+  editButton.addEventListener("click", () => {
+    // remove the other elements
+    taskElem.remove();
+    statusElem.remove();
+    deleteButton.remove();
+    editButton.remove();
 
-    const cancelButton = document.createElement("button");
-    cancelButton.textContent = "Cancel";
-    cancelButton.addEventListener("click", () => {
-      todoItemElem.append(taskElem, statusElem, deleteButton, editButton);
-      inputElem.remove();
-      saveButton.remove();
-      cancelButton.remove();
-    });
-
+    // add the input, save and cancel button
     todoItemElem.append(inputElem, saveButton, cancelButton);
-  }
+  });
+
+  saveButton.addEventListener("click", async () => {
+    const updatedTodo = await todoAPI.editTodo(todo.id, {
+      task: inputElem.value,
+    });
+    taskElem.textContent = `Task: ${updatedTodo.task}`;
+    statusElem.textContent = `Completed: ${updatedTodo.completed}`;
+    todoItemElem.append(taskElem, statusElem, deleteButton, editButton);
+    inputElem.remove();
+    saveButton.remove();
+    cancelButton.remove();
+  });
+
+  cancelButton.addEventListener("click", () => {
+    inputElem.value = todo.task;
+    inputElem.remove();
+    saveButton.remove();
+    cancelButton.remove();
+    todoItemElem.append(taskElem, statusElem, deleteButton, editButton);
+  });
+
+  todoItemElem.append(taskElem, statusElem, deleteButton, editButton);
 
   return todoItemElem;
 }
