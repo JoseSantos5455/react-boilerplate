@@ -1,14 +1,3 @@
 {
-  "todos": [
-    {
-      "id": "e208",
-      "task": "cook",
-      "completed": false
-    },
-    {
-      "id": "b8f0",
-      "task": "cook",
-      "completed": false
-    }
-  ]
+  "todos": []
 }
