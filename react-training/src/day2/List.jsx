@@ -67,11 +67,14 @@ export default function List() {
       <li
         // we should never use Math.random() or call a function to generate the key
         // because every time the component rerenders, the functions will be triggered again
-        key={(() => {
-          const id = uuidv4();
-          console.log(id);
-          return id;
-        })()}
+        // we will never do this
+        // key={(() => {
+        //   const id = uuidv4();
+        //   console.log(id);
+        //   return id;
+        // })()}
+
+        key={id}
       >
         {/* here we can do this, because we need the return value from the function */}
         <img src={getImageUrl(person)} alt={name} />
