@@ -1,0 +1,11 @@
+table {
+  /* gap */
+  border-spacing: 15px;
+  border: 1px solid white;
+}
+
+th,
+td {
+  border: 1px solid white;
+  padding: 5px;
+}

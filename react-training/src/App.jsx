@@ -4,6 +4,7 @@ import Day3 from "./day3/Day3";
 import Day4 from "./day4";
 import Day5 from "./day5";
 import Day6 from "./day6";
+import EventListApp from "./EventList";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       {/* <Day3 /> */}
       {/* <Day4 />  */}
       {/* <Day5 /> */}
-      <Day6 />
+      {/* <Day6 /> */}
+      <EventListApp />
     </>
   );
 }

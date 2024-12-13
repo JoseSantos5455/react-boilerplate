@@ -20,6 +20,11 @@ export default function FnCounter() {
   //   all useEffects run on initial render
   useEffect(() => {
     console.log("Mimic: Component did mount");
+
+    // mimic componentWillUnmount
+    return () => {
+      console.log("Mimic: Component will unmount");
+    };
   }, []);
 
   //   mimic componentDidUpdate
