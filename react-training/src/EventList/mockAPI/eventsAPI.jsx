@@ -6,6 +6,23 @@ const mockEvents = [
   { id: genId(), eventName: "Event 3", start: "2021-01-05", end: "2021-01-06" },
 ];
 
-export async function getEvents() {
+async function getEvents() {
+  // return mockEvents;
   return [...mockEvents];
+
+  // return JSON.parse(JSON.stringify(mockEvents));
 }
+
+async function addEvent(event) {
+  const newEvent = {
+    id: genId(),
+    ...event,
+  };
+  mockEvents.push(newEvent);
+  return newEvent;
+}
+
+export default {
+  getEvents,
+  addEvent,
+};

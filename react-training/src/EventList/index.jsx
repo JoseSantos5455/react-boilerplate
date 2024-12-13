@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getEvents } from "./mockAPI/eventsAPI";
+import eventsAPI from "./mockAPI/eventsAPI";
 import "./EventList.css";
-import { genId } from "./util";
 
 export default function EventListApp() {
   const [events, setEvents] = useState([]);
@@ -11,7 +10,7 @@ export default function EventListApp() {
   useEffect(() => {
     // we can create async functions inside useEffect's callback
     (async () => {
-      const events = await getEvents();
+      const events = await eventsAPI.getEvents();
       setEvents(events);
     })();
   }, []);
@@ -19,7 +18,8 @@ export default function EventListApp() {
   const openForm = () => setShowForm(true);
   const closeForm = () => setShowForm(false);
 
-  const addEvent = (newEvent) => {
+  const addEvent = async (event) => {
+    const newEvent = await eventsAPI.addEvent(event);
     setEvents((prev) => [...prev, newEvent]);
   };
 
@@ -94,10 +94,7 @@ function NewEventForm({ closeForm, addEvent }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addEvent({
-      id: genId(),
-      ...formState,
-    });
+    addEvent(formState);
     closeForm();
   };
 
