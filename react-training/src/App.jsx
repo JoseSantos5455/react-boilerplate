@@ -6,6 +6,7 @@ import Day5 from "./day5";
 import Day6 from "./day6";
 import Day7 from "./Day7_Patterns";
 import Day8 from "./Day8_Context";
+import { CountProvider } from "./Day8_Context/context/CountContext";
 import EventListApp from "./EventList";
 import { EventsProvider } from "./EventList/context/EventsContext";
 
@@ -17,9 +18,12 @@ function App() {
       {/* <Day4 />  */}
       {/* <Day5 /> */}
       {/* <Day6 /> */}
-      <EventsProvider>
-        <EventListApp />
-      </EventsProvider>
+
+      <CountProvider>
+        <EventsProvider>
+          <EventListApp />
+        </EventsProvider>
+      </CountProvider>
       {/* <Day7 /> */}
       {/* <Day8 /> */}
     </>
