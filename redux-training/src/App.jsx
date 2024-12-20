@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import TodoList from "./components/TodoList";
 import NewTodoForm from "./components/NewTodoForm";
+import { useEffect } from "react";
+
+const TODOS_API = "http://localhost:3001/todos";
 
 function App() {
   const count = useSelector((state) => {
@@ -16,6 +19,14 @@ function App() {
   const theme = useSelector((state) => state.theme);
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetch(TODOS_API)
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch({ type: "SET_TODOS", payload: data });
+      });
+  }, []);
 
   // const increment = () => {
   //   dispatch({ type: "INCREMENT" });
